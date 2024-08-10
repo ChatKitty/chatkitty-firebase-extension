@@ -1,0 +1,23 @@
+{
+  "emulators": {
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true,
+    "functions": {
+      "port": 5001
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "auth": {
+      "port": 9099
+    }
+  },
+  "extensions": {
+    "chatkitty": "../.."
+  }
+}

@@ -1,0 +1,6 @@
+# Code editor and IDE files
+.idea
+.vscode
+
+##  Log files
+**/*.log
