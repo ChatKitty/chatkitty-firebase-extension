@@ -8,6 +8,7 @@ plugins:
   - - "@semantic-release/github"
   - - "@semantic-release/git"
     - assets:
+        - "functions/lib/**"
         - "extension.yaml"
         - "CHANGELOG.md"
       message: "chore(release): prepare ${nextRelease.version} [skip ci]"

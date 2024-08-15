@@ -22,8 +22,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install build dependencies
         run: npm ci
+
+      - name: Install functions dependencies
+        working-directory: functions
+        run: npm ci
+
+      - name: Build functions
+        working-directory: functions
+        run: npm run build:package
 
       - name: Release
         env:
