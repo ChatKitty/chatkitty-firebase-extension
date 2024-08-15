@@ -2,5 +2,8 @@
 .idea
 .vscode
 
+## Node modules
+node_modules
+
 ##  Log files
 **/*.log

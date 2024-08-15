@@ -1,14 +1,11 @@
 {
-  "name": "chatkitty",
+  "name": "functions",
   "description": "ChatKitty Firebase Functions",
   "main": "lib/index.js",
-  "engines": {
-    "node": "18"
-  },
   "scripts": {
     "lint": "eslint \"src/**/*\"",
     "lint:fix": "eslint \"src/**/*\" --fix",
-    "package": "tsc",
+    "build:package": "tsc",
     "build:watch": "tsc --watch"
   },
   "dependencies": {

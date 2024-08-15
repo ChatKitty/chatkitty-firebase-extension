@@ -7,7 +7,7 @@ const chatkitty = new ChatKitty({
 });
 
 
-export const createChatUser =
+export const handleCreateUser =
     functions.auth.user().onCreate(async (user) => {
       await chatkitty.Users.checkUserExists(user.uid).catch(async () => {
         await chatkitty.Users.createUser({
@@ -18,7 +18,7 @@ export const createChatUser =
       });
     });
 
-export const deleteChatUser = functions.auth.user().onDelete(async (user) => {
+export const handleDeleteUser = functions.auth.user().onDelete(async (user) => {
   const result = await chatkitty.Users.listUsers(0, 0, undefined, user.uid);
 
   const users = result.data._embedded?.users;
