@@ -1,3 +1,10 @@
+## Version 1.1.0
+
+
+### Features
+
+* sync ChatKitty application with Firebase project ([2d58a33](https://github.com/ChatKitty/chatkitty-firebase-extension/commit/2d58a339357c60e068af1a3c1f8d18a23324e7aa))
+
 ## Version 1.0.1
 
 

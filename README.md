@@ -43,6 +43,24 @@ ChatKitty requires Firebase Authentication for user management. Make sure Fireba
 
 **Cloud Functions:**
 
+* **syncApplication:** Syncs your ChatKitty application with your Firebase project.
+
 * **handleCreateUser:** Listens for user accounts to be created in your Firebase project and creates a ChatKitty user for each new user.
 
 * **handleDeleteUser:** Listens for user accounts to be deleted in your Firebase project and deletes the corresponding ChatKitty user.
+
+
+
+**APIs Used**:
+
+* iam.googleapis.com (Reason: Required to sync ChatKitty users with Firebase users.)
+
+
+
+**Access Required**:
+
+
+
+This extension will operate with the following project IAM roles:
+
+* firebaseauth.viewer (Reason: Required to list Firebase users to sync with ChatKitty users.)
