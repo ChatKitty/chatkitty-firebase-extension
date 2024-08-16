@@ -1,11 +1,11 @@
-## [1.0.1](https://github.com/ChatKitty/chatkitty-firebase-extension/compare/1.0.0...1.0.1) (2024-08-15)
+## Version 1.0.1
 
 
 ### Bug Fixes
 
 * build functions on release ([9797dfa](https://github.com/ChatKitty/chatkitty-firebase-extension/commit/9797dfa23d84189db5fb68602cfa7332fe5adb5c))
 
-## Version 1.0.0 (2024-08-15)
+## Version 1.0.0
 
 
 ### Bug Fixes

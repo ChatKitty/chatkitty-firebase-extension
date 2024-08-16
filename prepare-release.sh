@@ -12,8 +12,9 @@ CHANGELOG_FILE="CHANGELOG.md"
 
 echo "Preparing extension for version $NEXT_RELEASE_VERSION"
 sed -i "s/^version:.*/version: $NEXT_RELEASE_VERSION/" $EXTENSION_FILE
-echo "Updated version in $EXTENSION_FILE to $NEXT_RELEASE_VERSION"
 
 echo "Preparing changelog for version $NEXT_RELEASE_VERSION"
-sed -i "/^# $NEXT_RELEASE_VERSION/s/^# /## Version /" $CHANGELOG_FILE
-echo "Updated heading in $CHANGELOG_FILE"
+sed -i -E "
+/^# \[?[0-9]+\.[0-9]+\.[0-9]+\]?/s/^# \[?([0-9]+\.[0-9]+\.[0-9]+)\]?(\(.*\))?(.*)/## Version \1\3/;
+/^## \[[0-9]+\.[0-9]+\.[0-9]+\]\(https:\/\/github\.com\/.*\/compare\/[0-9]+\.[0-9]+\.[0-9]+.../s/## \[([0-9]+\.[0-9]+\.[0-9]+)\]\(.*\)/## Version \1/
+" $CHANGELOG_FILE

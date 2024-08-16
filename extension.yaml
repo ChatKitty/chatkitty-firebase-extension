@@ -2,7 +2,6 @@ name: chatkitty
 version: 1.0.1
 specVersion: v1beta
 license: Apache-2.0
-billingRequired: true
 
 displayName: ChatKitty
 description: >-
@@ -18,7 +17,29 @@ author:
 sourceUrl: https://github.com/chatkitty/chatkitty-firebase-extension
 releaseNotesUrl: https://github.com/chatkitty/chatkitty-firebase-extension/blob/main/CHANGELOG.md
 
+externalServices:
+  - name: ChatKitty API
+    pricingUri: https://chatkitty.com/pricing
+
+apis:
+  - apiName: iam.googleapis.com
+    reason: Required to sync ChatKitty users with Firebase users.
+
+roles:
+  - role: firebaseauth.viewer
+    reason: Required to list Firebase users to sync with ChatKitty users.
+
+billingRequired: true
+
 resources:
+  - name: syncApplication
+    type: firebaseextensions.v1beta.function
+    description: >-
+      Syncs your ChatKitty application with your Firebase project.
+    properties:
+      runtime: nodejs18
+      taskQueueTrigger: {}
+
   - name: handleCreateUser
     type: firebaseextensions.v1beta.function
     description: >-
@@ -27,17 +48,7 @@ resources:
       runtime: nodejs18
       eventTrigger:
         eventType: providers/firebase.auth/eventTypes/user.create
-        resource: projects/${PROJECT}
-
-  - name: handleSignInUser
-    type: firebaseextensions.v1beta.function
-    description: >-
-      Listens for user accounts to sign in in your Firebase project and creates a ChatKitty user for each new user.
-    properties:
-      runtime: nodejs18
-      eventTrigger:
-        eventType: providers/firebase.auth/eventTypes/user.signIn
-        resource: projects/${PROJECT}
+        resource: projects/${PROJECT_ID}
 
   - name: handleDeleteUser
     type: firebaseextensions.v1beta.function
@@ -47,7 +58,18 @@ resources:
       runtime: nodejs18
       eventTrigger:
         eventType: providers/firebase.auth/eventTypes/user.delete
-        resource: projects/${PROJECT}
+        resource: projects/${PROJECT_ID}
+
+lifecycleEvents:
+  onInstall:
+    function: syncApplication
+    processingMessage: Syncing ChatKitty application...
+  onUpdate:
+    function: syncApplication
+    processingMessage: Syncing ChatKitty application...
+  onConfigure:
+    function: syncApplication
+    processingMessage: Syncing ChatKitty application...
 
 params:
   - param: CLIENT_ID
